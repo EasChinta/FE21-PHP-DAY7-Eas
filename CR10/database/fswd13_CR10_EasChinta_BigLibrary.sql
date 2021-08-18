@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 14, 2021 at 03:13 PM
+-- Generation Time: Aug 18, 2021 at 02:40 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `fswd13_CR10_EasChinta_BigLibrary`
 --
-CREATE DATABASE IF NOT EXISTS `fswd13_CR10_EasChinta_BigLibrary` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `fswd13_CR10_EasChinta_BigLibrary` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `fswd13_CR10_EasChinta_BigLibrary`;
 
 -- --------------------------------------------------------
@@ -98,9 +98,9 @@ INSERT INTO `media` (`id`, `image`, `author_id`, `ISBN`, `short_desc`, `publish_
 (95, 'https://cdn.pixabay.com/photo/2015/11/19/21/11/knowledge-1052013__340.jpg', 5, 'dada', 'dadad', '2021-08-04', 4, 'Book', 'available', 'test6'),
 (96, 'https://cdn.pixabay.com/photo/2016/04/09/18/21/photo-book-1318702__340.png', 1, 'image', 'image', '2021-08-12', 1, 'Book', 'available', 'image test'),
 (97, 'https://cdn.pixabay.com/photo/2019/10/16/10/12/double-exposure-4554077__340.jpg', 1, 'dads', 'hahah', '2021-08-11', 1, 'Book', 'available', 'test test '),
-(98, 'https://cdn.pixabay.com/photo/2015/11/24/21/08/dreamland-1060880__340.jpg', 1, '', 'testtest', '2021-08-18', 1, 'Book', 'available', 'testtest'),
-(99, 'https://cdn.pixabay.com/photo/2018/04/22/16/35/fantasy-3341539__340.jpg', 1, 'sdada', 'dadadada', '2021-08-25', 1, 'Book', 'available', 'just changing pic'),
-(100, 'https://cdn.pixabay.com/photo/2019/06/09/13/23/skull-4262127__340.jpg', 7, 'ewqeqweqedq', 'sdadadadd', '2021-08-24', 1, 'Book', 'available', 'Last test change pic from update');
+(99, 'https://cdn.pixabay.com/photo/2019/03/17/15/16/fantasy-4061185__340.jpg', 1, 'sdada', 'dadadada', '2021-08-25', 1, 'Book', 'available', 'just changing pic again'),
+(100, 'https://cdn.pixabay.com/photo/2019/06/09/13/23/skull-4262127__340.jpg', 7, 'ewqeqweqedq', 'sdadadadd', '2021-08-24', 1, 'Book', 'available', 'Last test change pic from update'),
+(101, 'https://cdn.pixabay.com/photo/2017/11/02/22/40/fantasy-2912841__340.jpg', 8, 'dadada', 'asdassdadada', '2021-08-19', 3, 'DVD', 'reserved', 'Last test add');
 
 -- --------------------------------------------------------
 
@@ -123,6 +123,32 @@ INSERT INTO `publisher` (`publisher_id`, `name`, `address`) VALUES
 (2, 'London House Publishing', 'London, UK'),
 (3, 'Paris Publishing', 'Paris, France'),
 (4, 'Dublin Publishing', 'Dublin, Ireland');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `status` varchar(25) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `picture`, `password`, `status`) VALUES
+(1, 'test', 'test', 'test@gmail.com', 'avatar.png', '7c29b19fed26a0847b25d4d0e6e568ff785b150ab03023ad127bf1dbf554578f', 'adm'),
+(4, 'Eas', 'Chinta', 'eas@gmail.com', '611cd1f3b677b.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(5, 'john', 'doe', 'john@gmail.com', '611ce67b648ac.png', '49eff747f7b66f70133bfe00aa8ac2d6b0fbee5be80e52537b0163f147d20418', 'user'),
+(6, 'Mike', 'Johnson', 'mike@gmail.com', '611cf327e7c1c.png', '49eff747f7b66f70133bfe00aa8ac2d6b0fbee5be80e52537b0163f147d20418', 'user');
 
 --
 -- Indexes for dumped tables
@@ -149,6 +175,12 @@ ALTER TABLE `publisher`
   ADD PRIMARY KEY (`publisher_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -162,13 +194,19 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
   MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
